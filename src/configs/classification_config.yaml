@@ -1,0 +1,138 @@
+---
+paths:
+  data: '../data/'
+experiment:
+  root_name: maismall-frattgru/ #nested-transfers/
+  name: x
+  labels: binconcepts
+  nclasses: 2
+  max_seed: 999
+  model_seeds_n: 1
+seeds:
+  # splitter: 21
+  # oversampler: 11
+  # model: 129
+  splitter: 129
+features:
+  dimension: x
+data:
+  type: x
+  primary: x
+  secundary: x
+  cropper: full
+ml:
+  pipeline:
+    sampler: nosplr
+    xvalidator: nonnested_xval # transfer_nonnested_xval
+    outer_splitter: stratkf
+    gs_splitter: stratkf
+    gridsearch: supgs
+    parameters_gridsearch: exhaustive # combinations or exhaustive
+    scorer: 2clfscorer
+    model: attentionrnn
+  splitters:
+    nfolds: 10
+    shuffle: True
+    stratifier_col: dataset_label #permutation for capacitor 1# vector_binary for chemlab
+  xvalidators: 
+    nested_xval:
+      optim_scoring: roc
+      paramgrid:
+        x: 
+          - x
+  models:
+    maxlen: x # capacitor 
+    padding_value: 0
+    save_best_model: False
+    early_stopping: False
+    lstm:
+      cell_type: GRU
+      n_layers: 1
+      n_cells: 
+        - 16
+      dropout: 0.02
+      optimiser: adam
+      loss: cce
+      batch_size: 16
+      verbose: -1
+      padding_value: 0
+      early_stopping: False
+      save_best_model: True
+      patience: 5
+      shuffle: False
+      epochs: 50
+    attention_rnn:
+      attention_hidden_size: 16
+      rnn_ncells: 32
+      rnn_type: pad # keras, keras-accumul, agg, pad
+      batch_size: 128
+      primary_epochs: 30
+      secundary_epochs: x
+      classifier_dropout: 0.1
+      rnn_dropout: 0.1
+      rnn_nlayers: 1
+      rnn_cell_type: gru # or lstm
+      padding_value: 0
+      loss_name: nll # cce or nll
+      loss_reduction: sum
+      attention_type: kqv
+      attention_agg: none
+      transfer_model: X
+      shuffle: False
+      save_best_model: False
+      early_stopping: False
+      patience: 10
+      epsilon: 0.00001 # 0.0001
+      freeze: hot
+    # rnn_attention:
+    #   attention_hidden_size: x
+    #   attention_agg: none #concat 
+    #   attention_type: kqv # keras, kqv, bmm, richard
+    #   rnn_cell_type: gru # or lstm
+    #   rnn_ncells: x
+    #   rnn_nlayers: 1
+    #   rnn_dropout: 0
+    #   rnn_type: pad # keras, keras-accumul, agg, pad
+    #   classifier_dropout: 0.02
+    #   batch_size: 32
+    #   padding_value: 0
+    #   epochs: 1
+    #   save_best_model: False
+    #   early_stopping: False
+    #   loss_name: nll # cce or nll
+    #   loss_reduction: sum
+    all_attentions:
+      attention_heads: 8
+  transfer:
+    primary:
+      # epochs: 2
+      early_stopping: False
+    secundary:
+      # dropout_clf: 0
+      # dropout_gru: 0
+      early_stopping: False
+      gru_transfer: hot # freeze or anything else
+      clf_transfer: hot # freeze or anything else
+      clf_primary: False
+      gru_primary: False
+      clf_secundary: False # true adds another layer
+      gru_secundary: False
+      # epochs: 5
+  scorer:
+    scoring_metrics:
+      - tp
+      - fp
+      - roc
+      - recall
+      - precision
+      - balanced_accuracy
+      - roc
+    fairness_metrics:
+      - tp
+      - fp
+      - roc
+      - recall
+      - precision
+      - balanced_accuracy
+      - roc
+...

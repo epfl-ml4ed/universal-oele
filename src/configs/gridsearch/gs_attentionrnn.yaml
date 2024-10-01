@@ -1,0 +1,94 @@
+---
+# Exhaustive gridsearch
+#### TRANSFER GRIDSEARCH
+# secundary_attention_hidden_size:
+#     - 8
+#     - 64
+# secundary_rnn_ncells:
+#     - 8
+#     - 64
+# secundary_epochs:
+#     - 500
+#     # - 1000
+# transfer_model:
+# #     - model1
+#     # - model2
+#     - model3
+#     # - model4
+#     # - model5
+#     - model6
+#### BASELINE GRIDSEARCH
+# transfer_model:
+#     - switch
+# attention_hidden_size:
+#     - 8
+#     - 16
+#     - 32
+#     - 64
+# rnn_ncells:
+#     - 8
+#     - 16
+#     - 32
+#     - 64
+# primary_epochs:
+#     - 30
+#     - 500
+
+## Transfer
+## Transfer
+# transfer_model:
+#     - val_report
+# attention_hidden_size:
+#     - 1
+# rnn_ncells:
+#     - 32
+# secundary_rnn_ncells:
+#     - 16
+# primary_epochs:
+#     - 10
+# secundary_epochs:
+#     - 15
+transfer_model:
+    - model1
+primary_epochs:
+    - 1
+secundary_epochs:
+    - 1
+
+# transfer_model:
+#     - doubleattention
+# attention_hidden_size:
+#     - 16
+#     - 32
+# rnn_ncells:
+#     - 16
+#     - 32
+# secundary_rnn_ncells:
+#     - 16
+#     - 32
+# primary_epochs:
+#     - 15
+#     - 30
+# secundary_epochs:
+#     - 15
+#     - 30
+
+
+
+
+# transfer_model:
+#     - switch
+# attention_hidden_size:
+#     - 1
+#     - 8
+#     - 32
+# rnn_ncells:
+#     - 16
+#     - 32
+# primary_epochs:
+#     - 10
+#     - 15
+# secundary_epochs:
+#     - 10
+#     - 15
+...

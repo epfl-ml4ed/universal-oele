@@ -1,0 +1,52 @@
+---
+####### All
+all-lightbeer-coldstart:
+  primary: universal_capcol.universal_chem.universal_lightcap.universal_vetbeer
+  secundary: universal_lightbeer
+all-vetbeer-coldstart:
+  primary: universal_capcol.universal_chem.universal_lightcap.universal_lightbeer
+  secundary: universal_vetbeer
+all-lightcap-coldstart:
+  primary: universal_capcol.universal_chem.universal_lightbeer.universal_vetbeer
+  secundary: universal_lightcap
+####### Good
+good-lightbeer-coldstart:
+  primary: universal_capcol.universal_chem
+  secundary: universal_lightbeer
+good-vetbeer-coldstart:
+  primary: universal_capcol.universal_chem
+  secundary: universal_vetbeer
+good-lightcap-coldstart:
+  primary: universal_capcol.universal_chem
+  secundary: universal_lightcap
+####### Same task
+sametask-lightbeer-coldstart:
+  primary: universal_lightcap.universal_vetbeer
+  secundary: universal_lightbeer
+sametask-vetbeer-coldstart:
+  primary: universal_lightcap.universal_lightbeer
+  secundary: universal_vetbeer
+sametask-lightcap-coldstart:
+  primary: universal_lightbeer.universal_vetbeer
+  secundary: universal_lightcap
+####### Same Sim
+samesim-lightbeer-coldstart:
+  primary: universal_chem.universal_vetbeer
+  secundary: universal_lightbeer
+samesim-vetbeer-coldstart:
+  primary: universal_chem.universal_lightbeer
+  secundary: universal_vetbeer
+samesim-lightcap-coldstart:
+  primary: universal_capcol
+  secundary: universal_lightcap
+####### Same Pop
+samepop-lightbeer-coldstart:
+  primary: universal_capcol.universal_lightcap
+  secundary: universal_lightbeer
+samepop-vetbeer-coldstart:
+  primary: universal_chem
+  secundary: universal_vetbeer
+samepop-lightcap-coldstart:
+  primary: universal_capcol.universal_lightbeer
+  secundary: universal_lightcap
+...

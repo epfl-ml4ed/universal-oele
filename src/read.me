@@ -1,0 +1,27 @@
+# Raw Data
+The raw data at the beginning of the pipeline, for each dataset, is a dictionary which follows the following structure:
+- sequences:
+    idx0:
+        - path: path where the sequence is stored (if original data is logged per student)
+        - sequence: sequence of actions for the student [event_0, event_1, ..., event_n]
+        - begin: sequence of the beginning of each action [begin_0, begin_1, ..., begin_n]
+        - end: sequence of the end of each action [end_0, end_1, ..., end_n]
+        # => event_0 laster for (end_0 - begin_0) seconds
+        - permutation: permutation given for the post test (can be named as you wish)
+        - last_timestamp: last timestamp recorded for the simulation (only necessary for simulations)
+        - length: length of the sequence (not required)
+        - learner_id: unique identifier for the student
+    idx1:
+        - ...
+    ...
+    idxn: 
+        - ...
+- index:
+    - learner_id0: idx0
+    - learner_id1: idx1 
+    - learner_id2: idx2
+    - learner_id3: idx3
+
+# Processing the data
+
+
